@@ -131,7 +131,7 @@ namespace EfCodeFirstCore.GUI
                 {
                     if (Console.ReadKey().Key == ConsoleKey.Enter)
                     {
-                        if (iManager.CreateEmployee(type, inputStrings, departmentNumber))
+                        if (iManager.CreateEmployee(type, inputStrings, departmentNumber, departments))
                         {
                             Console.WriteLine("Employee was succesfully created");
                             Console.WriteLine("Press escape to go back to the start menu");

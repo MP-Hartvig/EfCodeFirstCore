@@ -52,29 +52,25 @@ namespace EfCodeFirstCore.Managers
             return locationHandler.CreateLocation(location);
         }
 
-        public bool CreateDepartment(string departmentName, string locationNumber)
+        public bool CreateDepartment(string departmentName, string locationNumber, List<Location> locations)
         {
             DepartmentDataHandler departmenthandler = new DepartmentDataHandler(efContext);
             ConvertStringToInt converter = new ConvertStringToInt();
             Department department = new Department();
-            Location location = new Location();
 
             int temp = converter.ConvertStringToIntWithErrorHandling(locationNumber);
-            location.id = (temp - 1);
 
             department.name = departmentName;
-            department.location = location;
+            department.location = locations[temp - 1];
 
             return departmenthandler.CreateDepartment(department);
         }
 
-        public bool CreateEmployee(string type, List<string> inputStrings, string departmentNumber)
+        public bool CreateEmployee(string type, List<string> inputStrings, string departmentNumber, List<Department> departments)
         {
             ConvertStringToInt converter = new ConvertStringToInt();
-            Department department = new Department();
 
             int temp = converter.ConvertStringToIntWithErrorHandling(departmentNumber);
-            department.id = (temp - 1);
 
             if (type == "Developer")
             {
@@ -87,7 +83,7 @@ namespace EfCodeFirstCore.Managers
                 dev.streetName = inputStrings[3];
                 dev.privatePhone = inputStrings[4];
                 dev.primaryProgrammingLanguage = inputStrings[5];
-                dev.department = department;
+                dev.department = departments[temp - 1];
 
                 return devDataHandler.CreateDeveloper(dev);
             }
@@ -102,7 +98,7 @@ namespace EfCodeFirstCore.Managers
                 mana.streetName = inputStrings[3];
                 mana.privatePhone = inputStrings[4];
                 mana.workPhone = inputStrings[5];
-                mana.department = department;
+                mana.department = departments[temp - 1];
 
                 return manaDataHandler.CreateManager(mana);
             }

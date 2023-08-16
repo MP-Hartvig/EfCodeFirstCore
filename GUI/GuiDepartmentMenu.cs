@@ -90,7 +90,7 @@ namespace EfCodeFirstCore.GUI
                 Console.WriteLine((i + 1) + ". " + locations[i].city);
             }
 
-            Console.Write("Press a number.");
+            Console.Write("Press a number.\n");
 
             bool menuBool = true;
 
@@ -102,7 +102,7 @@ namespace EfCodeFirstCore.GUI
                 {
                     if (Console.ReadKey().Key == ConsoleKey.Enter)
                     {                        
-                        if (iManager.CreateDepartment(input, departmentNumber))
+                        if (iManager.CreateDepartment(input, departmentNumber, locations))
                         {
                             Console.WriteLine("Department was succesfully created");
                             Console.WriteLine("Press escape to go back to the start menu");
