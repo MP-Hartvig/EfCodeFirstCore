@@ -23,7 +23,7 @@ namespace EfCodeFirstCore.GUI
             Console.WriteLine("3. Delete location [WIP]");
             Console.WriteLine("4. Show all location");
             Console.WriteLine("5. Go back \n");
-            Console.Write("Press a number.");
+            Console.Write("Press a number.\n");
 
             bool menuControl = true;
 

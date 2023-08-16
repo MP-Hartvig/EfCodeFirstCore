@@ -24,7 +24,7 @@ namespace EfCodeFirstCore.GUI
             Console.WriteLine("3. Delete department [WIP]");
             Console.WriteLine("4. Show all departments");
             Console.WriteLine("5. Go back \n");
-            Console.Write("Press a number.");
+            Console.Write("Press a number.\n");
 
             bool menuControl = true;
 
