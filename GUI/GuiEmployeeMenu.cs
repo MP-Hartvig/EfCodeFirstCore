@@ -14,6 +14,7 @@ namespace EfCodeFirstCore.GUI
         string navigationMessage = "Press enter twice to go to the next step, or escape to go to the start menu \n";
 
         InitializationManager iManager = new InitializationManager();
+        List<string> inputStrings = new List<string>();
 
         public void EmployeeCrudMenu(string type)
         {
@@ -61,8 +62,6 @@ namespace EfCodeFirstCore.GUI
 
             bool menuBool = true;
 
-            List<string> inputStrings = new List<string>();
-
             // Dont like this, but didnt have time to refactor
             while (menuBool)
             {
@@ -74,23 +73,23 @@ namespace EfCodeFirstCore.GUI
                     {
                         inputStrings.Add(input);
 
-                        if (inputStrings.Count == 2)
+                        if (inputStrings.Count == 1)
                         {
                             CreateMenu(type, "last name");
                         }
-                        else if (inputStrings.Count == 3)
+                        else if (inputStrings.Count == 2)
                         {
                             CreateMenu(type, "street name");
                         }
-                        else if (inputStrings.Count == 4)
+                        else if (inputStrings.Count == 3)
                         {
                             CreateMenu(type, "street number");
                         }
-                        else if (inputStrings.Count == 5)
+                        else if (inputStrings.Count == 4)
                         {
                             CreateMenu(type, "private phone");
                         }
-                        else if (inputStrings.Count == 6)
+                        else if (inputStrings.Count == 5)
                         {
                             CreateMenu(type, "primary programming language");
                         }
@@ -103,6 +102,7 @@ namespace EfCodeFirstCore.GUI
 
                 if (Console.ReadKey().Key == ConsoleKey.Escape)
                 {
+                    inputStrings.Clear();
                     GoBack();
                 }
             }
@@ -119,7 +119,7 @@ namespace EfCodeFirstCore.GUI
                 Console.WriteLine((i + 1) + ". " + departments[i].name);
             }
 
-            Console.Write("Press a number.");
+            Console.Write("Press a number.\n");
 
             bool menuBool = true;
 
@@ -146,6 +146,7 @@ namespace EfCodeFirstCore.GUI
 
                 if (Console.ReadKey().Key == ConsoleKey.Escape)
                 {
+                    inputStrings.Clear();
                     GoBack();
                 }
             }
@@ -171,6 +172,7 @@ namespace EfCodeFirstCore.GUI
 
         private void GoBack()
         {
+            inputStrings.Clear();
             GuiManager guiManager = new GuiManager();
             guiManager.GuiInitializer();
         }
